@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
         var data = new FormData(this);
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/Tweets/AddTweet', false);
+        xhr.open('POST', '/TweetAdd', false);
         xhr.send(data);
         var res = JSON.parse(xhr.response);
         if(xhr.status == 200 && res.result === true){

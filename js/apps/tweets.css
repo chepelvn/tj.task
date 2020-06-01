@@ -9,3 +9,18 @@
 .title{
     font-size: 20px;
 }
+
+body{
+    font-family: "Tahoma", sans-serif;
+}
+.tweet{
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid grey;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.tweetTitle{
+    font-size: 18px;
+}

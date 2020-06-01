@@ -10,14 +10,4 @@ class TweetsFactory extends \Factory
 {
     const DB = 'tweets';
     const DB_CATEGORY = 'categories';
-
-    /**
-     * @return \Categories\Category[]
-     */
-    static public function GetTweetCategories(){
-        $q = parent::DB()->prepare("SELECT * FROM ".self::DB_CATEGORY);
-        $q->execute();
-        $q->setFetchMode(PDO::FETCH_ASSOC);
-        return $q->fetchAll(PDO::FETCH_CLASS, "Categories\Category");
-    }
 }

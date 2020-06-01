@@ -8,7 +8,7 @@
  */
 namespace Categories;
 
-class Category
+class Category extends \Categories
 {
     public $Id;
 
@@ -20,5 +20,15 @@ class Category
 
     public function getTitle(){
         return $this->Title;
+    }
+
+    /**
+     * @param $id
+     * @return \Categories\Category
+     */
+    static public function findById($id){
+        $q = parent::DB()->prepare("SELECT * FROM categories WHERE Id = ?");
+        $q->execute([$id]);
+        return $q->fetchAll(\PDO::FETCH_CLASS, __CLASS__)[0];
     }
 }

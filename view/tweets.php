@@ -1,32 +1,21 @@
 <?php
 addScriptHead('/js/apps/tweets.js', true);
 addStyleHead('/js/apps/tweets.css', true);
+/**
+ * @var $items \Tweets\Tweet[]
+ */
 ?>
-<style>
-    body{
-        font-family: "Tahoma", sans-serif;
-    }
-    .tweet{
-        margin: 5px;
-        padding: 10px;
-        border: 1px solid grey;
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
-        border-radius: 3px;
-    }
-    .tweetTitle{
-        font-size: 18px;
-    }
-</style>
 <div class="col-md-6">
     <span class="title">Твиты</span>
     <div class="tweets">
-        <div class="tweet">
-            <div class="tweetTitle">Заголовок</div>
-            <div class="tweetContent">Контент</div>
-            <div class="tweetUsername">Пользователь</div>
-            <div class="tweetCreateAt">Время</div>
-        </div>
+        <?foreach ($items as $item):?>
+            <div class="tweet">
+                <div class="tweetTitle"><?=$item->Category->getTitle()?></div>
+                <div class="tweetContent"><?=$item->getContent()?></div>
+                <div class="tweetUsername"><?=$item->getUsername()?></div>
+                <div class="tweetCreateAt"><?=$item->getCreatedAt()?></div>
+            </div>
+        <?endforeach;?>
     </div>
 </div>
 <div class="col-md-6">
@@ -34,7 +23,7 @@ addStyleHead('/js/apps/tweets.css', true);
     <form id="formSendTweet" method="POST">
         <div class="wrapCategorySelect margin-bottom">
             <select name="CategoryId">
-                <?foreach(TweetsFactory::GetTweetCategories() as $item):?>
+                <?foreach(Categories::GetCategories() as $item):?>
                     <option value="<?=$item->getId()?>"><?=$item->getTitle()?></option>
                 <?endforeach;?>
             </select>

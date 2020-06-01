@@ -9,31 +9,10 @@
 class Tweets extends TweetsFactory
 {
     public function action(){
-        $q = parent::DB()->prepare("SELECT * FROM ".parent::DB_CATEGORY);
+        $q = parent::DB()->prepare("SELECT * FROM ".parent::DB);
         $q->execute();
-        $q->setFetchMode(PDO::FETCH_ASSOC);
-        $items = $q->fetchAll();
+        $items = $q->fetchAll(PDO::FETCH_CLASS, "Tweets\Tweet");
 
-        return render('tweets');
-    }
-
-    public function AddTweet(){
-        $CategoryId = $_POST['CategoryId'];
-        $Username = $_POST['Username'];
-        $Content = $_POST['Content'];
-
-        $result = true;
-        try{
-            $q = parent::DB()->prepare("INSERT INTO ".self::DB." (Username, CategoryId, Content, CreatedAt) VALUES(:Username, :CategoryId, :Content, NOW())");
-            $q->execute([':Username' => $Username, ':CategoryId' => $CategoryId, ':Content' => $Content]);
-        } catch (PDOException $e){
-            $result = false;
-            echo $e->getMessage();
-        }
-
-        jsonDisplay([
-            'result' => $result
-        ]);
-        exit();
+        render('tweets', compact('items'));
     }
 }
