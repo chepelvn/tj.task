@@ -1,0 +1,11 @@
+.margin-bottom{
+    margin-bottom: 5px;
+}
+.col-md-6{
+    width: 50%;
+    float: left;
+}
+
+.title{
+    font-size: 20px;
+}
