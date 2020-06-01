@@ -24,6 +24,7 @@ class Factory
             $dataBase = config('mysql.db');
             $dsn = "mysql:dbname=$dataBase;host=$host";
             self::$_connect = new \PDO($dsn, $userName, $password);
+            self::$_connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         return self::$_connect;
     }
