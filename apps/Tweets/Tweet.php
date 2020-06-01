@@ -61,11 +61,11 @@ class Tweet extends \TweetsFactory
 
     /**
      * @param $Id
-     * @return $this
+     * @return Tweet
      */
     static public function findById($Id){
         $q = parent::DB()->prepare("SELECT * FROM ".parent::DB." WHERE Id = ?");
         $q->execute([$Id]);
-        return $q->fetchAll(PDO::FETCH_CLASS, __CLASS__)[0];
+        return $q->fetchAll(\PDO::FETCH_CLASS, __CLASS__)[0];
     }
 }
