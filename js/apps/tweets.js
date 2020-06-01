@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function(){
     var wrapPanel = document.createElement('div');
     wrapPanel.id = 'panel';
     document.body.append(wrapPanel);
-    wrapPanel.append();
 
     document.getElementById('formSendTweet').addEventListener('submit', function(e){
         e.preventDefault();
@@ -31,3 +30,13 @@ document.addEventListener('DOMContentLoaded', function(){
             alert('Произошла ошибка. '+xhr.status);
     });
 });
+
+function updateTweetsTable(){
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/Tweets', false);
+    xhr.send();
+
+    console.log(xhr.response);
+}
+
+setInterval(updateTweetsTable, 1000);
