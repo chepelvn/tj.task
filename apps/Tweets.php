@@ -9,10 +9,6 @@
 class Tweets extends TweetsFactory
 {
     public function action(){
-        $q = parent::DB()->prepare("SELECT * FROM " . parent::DB);
-        $q->execute();
-        $items = $q->fetchAll(PDO::FETCH_CLASS, "Tweets\Tweet");
-
         render('tweets', compact('items'));
     }
 

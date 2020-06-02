@@ -128,7 +128,7 @@ function updateTweetsTable(){
     document.getElementsByClassName('tweets')[0].innerHTML = html;
 }
 
-function showTweetsNoRead(){
+setInterval(function(){
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '/Tweets/GetTweetsNoRead', false);
     xhr.send();
@@ -141,8 +141,7 @@ function showTweetsNoRead(){
         document.getElementsByClassName('tweets')[0].insertAdjacentHTML('afterbegin', parseStringArgs(tweetMaket, item));
         document.querySelectorAll('[data-tid="'+item.Id+'"]')[0].classList.add('tweetNew');
     }
-}
-setInterval(showTweetsNoRead, 500);
+}, 500);
 
 
 document.addEventListener('DOMContentLoaded', function(){
