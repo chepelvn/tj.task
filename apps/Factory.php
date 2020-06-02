@@ -9,6 +9,10 @@
 class Factory
 {
     /**
+     * @var $_redis Redis
+     */
+    static $_redis;
+    /**
      * @var $_connect PDO
      */
     static $_connect;
@@ -27,5 +31,18 @@ class Factory
             self::$_connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         return self::$_connect;
+    }
+
+    /**
+     * @return Redis
+     */
+    static protected function Redis(){
+        if(!(self::$_redis instanceof Redis)){
+            $host = config('redis.host');
+            $port = config('redis.port');
+            self::$_redis = new Redis();
+            self::$_redis->connect($host, $port);
+        }
+        return self::$_redis;
     }
 }

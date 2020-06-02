@@ -1,13 +1,16 @@
 .margin-bottom{
     margin-bottom: 5px;
 }
-.col-md-6{
-    width: 50%;
+.wrapTweets,.wrapTweetAddForm{
+    width: 45%;
     float: left;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 .title{
-    font-size: 20px;
+    font-size: 17px;
+    text-transform: uppercase;
 }
 
 body{
@@ -16,11 +19,42 @@ body{
 .tweet{
     margin: 5px;
     padding: 10px;
-    border: 1px solid grey;
+    border: 1px solid #a2a2a2;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
+    position: relative;
 }
 .tweetTitle{
     font-size: 18px;
+}
+.tweetContent{
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.tweetUsername,.tweetCreateAt{
+    font-size: 13px;
+    color: #777777;
+}
+
+.tweetCreateAt{
+    position: absolute;
+    right: 10px;
+}
+
+.form-control{
+    width: 100%;
+    height: 30px;
+    border: 1px solid #a2a2a2;
+    border-radius: 3px;
+}
+textarea.form-control{
+    min-height: 150px;
+}
+.btn{
+    padding: 10px;
+}
+#formSendTweet{
+    margin: 5px;
 }
