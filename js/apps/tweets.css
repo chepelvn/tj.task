@@ -58,3 +58,11 @@ textarea.form-control{
 #formSendTweet{
     margin: 5px;
 }
+
+.tweetNew{
+    animation: blink 0.7s;
+    animation-iteration-count: 3;
+}
+@keyframes blink {
+    50% {box-shadow: 0 6px 12px rgba(0,0,0,1);}
+}

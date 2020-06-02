@@ -137,7 +137,9 @@ function showTweetsNoRead(){
 
     var html = '';
     for(var i in data.result.items){
-       document.getElementsByClassName('tweets')[0].insertAdjacentHTML('afterbegin', parseStringArgs(tweetMaket, data.result.items[i]));
+        var item = data.result.items[i];
+        document.getElementsByClassName('tweets')[0].insertAdjacentHTML('afterbegin', parseStringArgs(tweetMaket, item));
+        document.querySelectorAll('[data-tid="'+item.Id+'"]')[0].classList.add('tweetNew');
     }
 }
 setInterval(showTweetsNoRead, 500);
