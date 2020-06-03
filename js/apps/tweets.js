@@ -130,18 +130,19 @@ function updateTweetsTable(){
 
 setInterval(function(){
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/Tweets/GetTweetsNoRead', false);
+    xhr.open('GET', '/Tweets/GetTweets', false);
     xhr.send();
 
     var data = JSON.parse(xhr.response);
-
-    var html = '';
     for(var i in data.result.items){
         var item = data.result.items[i];
-        document.getElementsByClassName('tweets')[0].insertAdjacentHTML('afterbegin', parseStringArgs(tweetMaket, item));
-        document.querySelectorAll('[data-tid="'+item.Id+'"]')[0].classList.add('tweetNew');
+        var currentTweetItem = document.querySelectorAll('[data-tid="'+item.Id+'"]')[0];
+        if(!currentTweetItem){
+            document.getElementsByClassName('tweets')[0].insertAdjacentHTML('afterbegin', parseStringArgs(tweetMaket, item));
+            document.querySelectorAll('[data-tid="'+item.Id+'"]')[0].classList.add('tweetNew');
+        }
     }
-}, 500);
+}, 1000);
 
 
 document.addEventListener('DOMContentLoaded', function(){

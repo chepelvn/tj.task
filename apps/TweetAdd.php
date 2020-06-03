@@ -18,12 +18,8 @@ class TweetAdd extends TweetsFactory
             $PDO = parent::DB();
             $q = $PDO->prepare("INSERT INTO ".self::DB." (Username, CategoryId, Content, CreatedAt) VALUES(:Username, :CategoryId, :Content, NOW())");
             $q->execute([':Username' => $Username, ':CategoryId' => $CategoryId, ':Content' => $Content]);
-
-            parent::setMQ($PDO->lastInsertId());
-
         } catch (PDOException $e){
             $result = false;
-            echo $e->getMessage();
         }
 
         jsonDisplay([
