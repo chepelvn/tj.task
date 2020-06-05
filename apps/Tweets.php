@@ -9,7 +9,7 @@
 class Tweets extends TweetsFactory
 {
     public function action(){
-        render('tweets', compact('items'));
+        render('tweets');
     }
 
     public function GetTweets(){

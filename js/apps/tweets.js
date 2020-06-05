@@ -136,8 +136,8 @@ setInterval(function(){
     var data = JSON.parse(xhr.response);
     for(var i in data.result.items){
         var item = data.result.items[i];
-        var currentTweetItem = document.querySelectorAll('[data-tid="'+item.Id+'"]')[0];
-        if(!currentTweetItem){
+        var currentTweetItem = document.querySelectorAll('[data-tid="'+item.Id+'"]');
+        if(!currentTweetItem.length){
             document.getElementsByClassName('tweets')[0].insertAdjacentHTML('afterbegin', parseStringArgs(tweetMaket, item));
             document.querySelectorAll('[data-tid="'+item.Id+'"]')[0].classList.add('tweetNew');
         }
